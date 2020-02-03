@@ -1,0 +1,13 @@
+spring-demo-annotations/.gitattributes
+spring-demo-annotations/.project
+spring-demo-annotations/.settings
+spring-demo-annotations/bin
+spring-demo-annotations/gradle
+
+.metadata/
+Servers/
+spring-demo-annotations/.classpath
+spring-demo-annotations/.gradle
+spring-demo-annotations/gradlew
+spring-demo-annotations/gradlew.bat
+spring-demo-annotations/settings.gradle

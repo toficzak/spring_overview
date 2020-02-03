@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:property-placeholder location="classpath:partner.properties"/>
+
+	<bean id="publicator" class="spring.demo.one.Publicator">
+	</bean>
+
+	<!-- CONSTRUCTOR INJECTION -->
+	<bean id="creator" class="spring.demo.one.SimpleCreator">
+		<constructor-arg ref="publicator" />
+	</bean>
+
+	<!-- SETTER INJECTION -->
+	<bean id="partnerCreator" class="spring.demo.one.PartnerCreator"
+	init-method="init"
+	destroy-method="destroy">
+		<property name="publicator" ref="publicator"></property>
+		
+		<!-- injecting literal values -->
+		<property name="secretKey" value="secretKey"></property>
+		<property name="partnerName" value="Macrohard"></property>
+	</bean>
+	
+	<bean id="partnerCreatorFromPropertyFile" class="spring.demo.one.PartnerCreator">
+		<property name="publicator" ref="publicator"></property>
+		
+		<!-- injecting literal values from property file -->
+		<property name="secretKey" value="${partner.secretKey}"></property>
+		<property name="partnerName" value="${partner.name}"></property>
+	</bean>
+</beans>
